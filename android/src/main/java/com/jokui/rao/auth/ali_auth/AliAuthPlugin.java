@@ -263,8 +263,11 @@ public class AliAuthPlugin extends FlutterActivity implements FlutterPlugin, Met
                 if (jsonObj != null && jsonObj.contains("isChecked")) {
                     JSONObject isCheck = JSONObject.parseObject(jsonObj);
                     tokenRet.setToken(String.valueOf(isCheck.getBooleanValue("isChecked")));
+                    resultData(tokenRet.toJsonString());
+
+                } else {
+                    _events.success(jsonObj);
                 }
-                resultData(tokenRet.toJsonString());
             }
         });
     }
